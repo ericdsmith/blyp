@@ -178,6 +178,7 @@ describe('Product controller', function(){
     // }
     mongoose.connection.close(done);
   });
+
   it('Should create a new product', function(done){
     var fakeProduct = {
       sku: '456123',
@@ -195,4 +196,31 @@ describe('Product controller', function(){
       done();
     });
   });
+
+  it('Should get all products', function(done){
+    var fakeProduct = {
+      sku: '984623',
+      price: [20.00],
+      inventory: 15,
+      name: 'Bag',
+      categories: ['Clothing', 'Accessories'],
+      details: ['Brown']
+    };
+    productController.createProduct(fakeProduct, function(err, product){
+      productController.getAllProducts(function(products){
+        expect(products.length).to.equal(2);
+        done();
+      });
+    });
+  });
+
+  it('Should update a product by id', function(done){
+    productController.getProductByName('Bag', function(product){
+      var id = product._id;
+      productController.updateProductById(id, {price: [10.00]}, function(product){
+        expect(product.price).to.equal(10.00);
+        done();
+      });
+    });
+  })
 });
