@@ -30,7 +30,7 @@ exports.getProductById = function(id, callback){
   });
 };
 
-exports.getProductByProductname = function(productname, callback){
+exports.getProductByName = function(productname, callback){
   Product.findOne({name: productname})
   .then(function(product){
     callback(product);
@@ -40,8 +40,9 @@ exports.getProductByProductname = function(productname, callback){
   });
 };
 
+//Not working
 exports.updateProductById = function(id, update, callback){
-  Product.findOneAndUpdate({_id: id}, update)
+  Product.findOneAndUpdate({_id: id}, {new: true}, update)
   .then(function(product){
     callback(product);
   })
