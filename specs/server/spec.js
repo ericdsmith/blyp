@@ -222,5 +222,18 @@ describe('Product controller', function(){
         done();
       });
     });
-  })
+  });
+
+    it('Should delete a product by id', function(done){
+    productController.getProductByName('Bag', function(product){
+      var id = product._id;
+      productController.deleteProductById(id, function(){
+        productController.getProductById(id, function(product){
+          expect(product).to.equal(null);
+          done();
+        })
+
+      });
+    });
+  });
 });
