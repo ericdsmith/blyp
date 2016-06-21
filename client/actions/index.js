@@ -1,7 +1,7 @@
 import * as types from '../constants/actionTypes';
 // import helper from '../services/helper';
-import {push} from 'react-router-redux';
-import {reset} from 'redux-form';
+import { push } from 'react-router-redux';
+import { reset } from 'redux-form';
 import axios from 'axios';
 
 //////////////////////////////////////////////////////////////
@@ -84,6 +84,28 @@ export const basketRemoveItem = (id) => {
   };
 };
 
+/**
+* Product save requests
+*/
+export const saveProductRequestSuccess = (product) => {
+  return {
+    type: types.SAVE_PRODUCT_REQUEST_SUCCESS,
+    product
+  }
+}
+
+export const saveProductRequestFailure = (err) => {
+  return {
+    type: types.SAVE_PRODUCT_REQUEST_FAILURE,
+    err
+  }
+}
+
+export const saveProductRequestSent = () => {
+  return {
+    type: types.SAVE_PRODUCT_REQUEST_SENT,
+  }
+}
 //////////////////////////////////////////////////////////////
 // Asynchronous Action Creator
 //////////////////////////////////////////////////////////////
@@ -96,7 +118,6 @@ export const basketRemoveItem = (id) => {
 // }
 
 export const attemptLogin = ({username, password}) => {
-  // prepare request
 
   return (dispatch) => {
     const config = {
@@ -117,5 +138,24 @@ export const attemptLogin = ({username, password}) => {
     });
 
     dispatch(loginRequestSent());
+  }
+}
+
+export const saveProduct = (data) => {
+  return (dispatch) => {
+    const config = {
+      url: '/api/products',
+      method: 'post',
+      data
+    };
+    axios(config)
+    .then(({ data }) => {
+      dispatch(saveProductRequestSuccess(data));
+      dispatch(reset('addComponentForm'));
+    })
+    .catch(err => {
+      dispatch(saveProductRequestFailure(err));
+    });
+    dispatch(saveProductRequestSent());
   }
 }

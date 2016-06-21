@@ -3,7 +3,7 @@ var Customer = require('./customer.js');
 exports.createCustomer = function(newCustomer, callback){
   new Customer(newCustomer).save()
   .then(function(customer){
-    callback(null, customer);
+    callback(customer);
   })
   .catch(function(err){
     callback(err);
@@ -40,6 +40,7 @@ exports.getCustomerByCustomername = function(customername, callback){
   });
 };
 
+//Not tested
 exports.updateCustomerById = function(id, update, callback){
   Customer.findOneAndUpdate({_id: id}, update)
   .then(function(customer){

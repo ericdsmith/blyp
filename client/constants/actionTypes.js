@@ -32,6 +32,13 @@ export const CHECKOUT = 'CHECKOUT';
 export const CHECKIN = 'CHECKIN';
 
 /**
+* Product insertion
+*/
+export const SAVE_PRODUCT_REQUEST_SUCCESS = 'SAVE_PRODUCT_REQUEST_SUCCESS';
+export const SAVE_PRODUCT_REQUEST_FAILURE = 'SAVE_PRODUCT_REQUEST_FAILURE';
+export const SAVE_PRODUCT_REQUEST_SENT = 'SAVE_PRODUCT_REQUEST_SENT';
+
+/**
 * Actions for testing
 */
 export const POPULATE_WITH_FAKE_DATA = 'POPULATE_WITH_FAKE_DATA';

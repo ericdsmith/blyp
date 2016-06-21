@@ -6,6 +6,7 @@ import ProductsPane from './containers/ProductsPaneContainer.js';
 import Toolbar from './containers/ToolbarContainer.js';
 import StoreMaster from './containers/StoreMasterContainer.js';
 import Chat from './containers/ChatContainer.js';
+import AddProduct from './containers/forms/AddProductFormContainer.js';
 // import ComponentOrContainer from './containers/Name';
 
 //testing imports
@@ -28,6 +29,7 @@ export default (
       {/*component available at /testing/sample*/}
       <Route path="/testing/sample" component={Sample} />
       <Route path="/testing/basket" component={TestBasket} />
+      <Route path="/testing/addProduct" component={AddProduct} />
     </Route>
   </Route>
 

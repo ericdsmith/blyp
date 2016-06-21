@@ -1,5 +1,4 @@
-import React from 'react'
-import {Component} from 'react'
+import React, { Component } from 'react'
 import userPNG from '../../assets/images/user.png'
 import lockPNG from '../../assets/images/lock.png'
 
@@ -41,4 +40,3 @@ export default class LoginForm extends Component {
     );
   }
 }
-//modify

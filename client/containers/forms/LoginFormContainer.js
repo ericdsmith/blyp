@@ -6,7 +6,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     attemptLogin: (values) => {
       dispatch(actions.attemptLogin(values));
-      // console.log(values);
     }
   };
 };

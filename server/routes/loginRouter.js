@@ -10,7 +10,5 @@ module.exports = router.post('/', (req, res) => {
     username: 'edu',
   }, SECRET);
 
-  console.log(token);
-
   res.json({admin: true, jwt: token, name: 'Eduard', username: 'edu'});
 });
