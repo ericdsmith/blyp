@@ -182,11 +182,11 @@ describe('Product controller', function(){
   it('Should create a new product', function(done){
     var fakeProduct = {
       sku: '456123',
-      price: [12.00],
+      price: 12.00,
       inventory: 12,
       name: 'iPhone',
       categories: ['Electronics', 'Apple'],
-      details: ['64GB', 'Space Grey']
+      details: [{size: '64GB', color: 'Space Grey'}]
     };
     productController.createProduct(fakeProduct, function(err, product){
       if(err){
@@ -200,11 +200,11 @@ describe('Product controller', function(){
   it('Should get all products', function(done){
     var fakeProduct = {
       sku: '984623',
-      price: [20.00],
+      price: 20.00,
       inventory: 15,
       name: 'Bag',
       categories: ['Clothing', 'Accessories'],
-      details: ['Brown']
+      details: [{color: 'Brown'}]
     };
     productController.createProduct(fakeProduct, function(err, product){
       productController.getAllProducts(function(products){
@@ -217,7 +217,7 @@ describe('Product controller', function(){
   it('Should update a product by id', function(done){
     productController.getProductByName('Bag', function(product){
       var id = product._id;
-      productController.updateProductById(id, {price: [10.00]}, function(product){
+      productController.updateProductById(id, {price: 10.00}, function(product){
         expect(product.price).to.equal(10.00);
         done();
       });
