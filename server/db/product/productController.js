@@ -42,7 +42,7 @@ exports.getProductByName = function(productname, callback){
 
 //Not working
 exports.updateProductById = function(id, update, callback){
-  Product.findOneAndUpdate({_id: id}, {new: true}, update)
+  Product.findOneAndUpdate({_id: id}, update, {new: true})
   .then(function(product){
     callback(product);
   })
