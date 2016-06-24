@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 var uniqueValidator = require('mongoose-unique-validator');
 
 var productSchema = mongoose.Schema({
@@ -9,7 +10,7 @@ var productSchema = mongoose.Schema({
   categories: Array,
 
   //Can contain an arbritray number of details. i.e. Album, Artist etc. 
-  details: Array
+  details: Schema.Types.Mixed
   },
   {
     timestamps: true

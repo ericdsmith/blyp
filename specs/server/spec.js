@@ -89,9 +89,9 @@ describe('User Controller', function () {
   });
 
   after(function(done){
-    // for (var i in mongoose.connection.collections) {
-    //   mongoose.connection.collections[i].remove(function() {});
-    // }
+    for (var i in mongoose.connection.collections) {
+      mongoose.connection.collections[i].remove(function() {});
+    }
     mongoose.connection.close(done);
   });
 
@@ -102,7 +102,7 @@ describe('User Controller', function () {
       role: 'Admin'
     };
 
-    userController.createUser(fakeUser, function(newUser){
+    userController.createUser(fakeUser, function(err, newUser){
       expect(newUser.username).to.equal(fakeUser.username);
       done();
     });
@@ -115,8 +115,8 @@ describe('User Controller', function () {
       role: 'Admin'
     };
 
-    userController.createUser(fakeUser, function(newUser){
-      expect(newUser.username).to.not.equal(fakeUser.username);
+    userController.createUser(fakeUser, function(err, newUser){
+      expect(err).to.exist;
       done();
     });
   });
@@ -129,7 +129,7 @@ describe('User Controller', function () {
     };
 
     userController.createUser(fakeUser2, function(){
-      userController.getAllUsers(function(users){
+      userController.getAllUsers(function(err, users){
         expect(users.length).to.equal(2);
         done();
       });
@@ -138,11 +138,11 @@ describe('User Controller', function () {
 
   it('Should delete a user by id', function(done){
     var userId = null;
-    userController.getUserByUsername('fakeuser', function(user){
+    userController.getUserByUsername('fakeuser', function(err, user){
       userId = user._id;
-      userController.deleteUserById(userId, function(user){
+      userController.deleteUserById(userId, function(err, user){
         expect(user.username).to.equal('fakeuser');
-        userController.getUserByUsername('fakeuser', function(user){
+        userController.getUserByUsername('fakeuser', function(err, user){
           expect(user).to.equal(null);
           done();
         });
@@ -154,9 +154,9 @@ describe('User Controller', function () {
 describe('Product controller', function(){
     before(function(done){
     function clearDB() {
-      // for (var i in mongoose.connection.collections) {
-      //   mongoose.connection.collections[i].remove(function() {});
-      // }
+      for (var i in mongoose.connection.collections) {
+        mongoose.connection.collections[i].remove(function() {});
+      }
       return done();
     }
 
@@ -183,15 +183,12 @@ describe('Product controller', function(){
     var fakeProduct = {
       sku: '456123',
       price: 12.00,
-      inventory: 12,
+      quantity: 12,
       name: 'iPhone',
       categories: ['Electronics', 'Apple'],
       details: [{size: '64GB', color: 'Space Grey'}]
     };
     productController.createProduct(fakeProduct, function(err, product){
-      if(err){
-        console.log(err);
-      }
       expect(product.sku).to.equal(fakeProduct.sku);
       done();
     });
@@ -201,13 +198,13 @@ describe('Product controller', function(){
     var fakeProduct = {
       sku: '984623',
       price: 20.00,
-      inventory: 15,
+      quantity: 15,
       name: 'Bag',
       categories: ['Clothing', 'Accessories'],
-      details: [{color: 'Brown'}]
+      details: {color: 'Brown', quality:'Designer'}
     };
     productController.createProduct(fakeProduct, function(err, product){
-      productController.getAllProducts(function(products){
+      productController.getAllProducts(function(err, products){
         expect(products.length).to.equal(2);
         done();
       });
@@ -215,9 +212,9 @@ describe('Product controller', function(){
   });
 
   it('Should update a product by id', function(done){
-    productController.getProductByName('Bag', function(product){
+    productController.getProductByName('Bag', function(err, product){
       var id = product._id;
-      productController.updateProductById(id, {price: 10.00}, function(product){
+      productController.updateProductById(id, {price: 10.00}, function(err, product){
         expect(product.price).to.equal(10.00);
         done();
       });
@@ -225,10 +222,10 @@ describe('Product controller', function(){
   });
 
     it('Should delete a product by id', function(done){
-    productController.getProductByName('Bag', function(product){
+    productController.getProductByName('iPhone', function(err, product){
       var id = product._id;
       productController.deleteProductById(id, function(){
-        productController.getProductById(id, function(product){
+        productController.getProductById(id, function(err, product){
           expect(product).to.equal(null);
           done();
         })
