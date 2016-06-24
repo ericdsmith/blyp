@@ -3,31 +3,61 @@ import * as types from '../constants/actionTypes';
 import { push } from 'react-router-redux';
 import { reset } from 'redux-form';
 import axios from 'axios';
+import total from '../helpers/basketTotal.js'
 
 //////////////////////////////////////////////////////////////
 // Synchronous Action Creators
 //////////////////////////////////////////////////////////////
+
+/**
+* Payment methods
+*/
+export const paymentMethodSelected = (method) => {
+  return {
+    type: types.PAYMENT_METHOD_SELECTED,
+    method
+  };
+};
+
+export const cashReceived = (amount) => {
+  return {
+    type: types.CASH_RECEIVED,
+    amount
+  };
+};
+
+export const checkoutCompleted = () => {
+  return {
+    type: types.CHECKOUT_COMPLETED,
+  };
+};
+
+export const resetPayment = () => {
+  return {
+    type: types.RESET_PAYMENT,
+  };
+};
 
 // example action creator
 export const somethingHappened = (data) => {
   return {
     type: types.DUMMY,
     color: data.color
-  }
-}
+  };
+};
 
 // Toolbar Buttons Actions
 export const checkoutClick = () => {
   return {
     type: types.CHECKOUT_CLICK
-  }
-}
+  };
+};
 
 export const inventoryClick = () => {
   return {
     type: types.INVENTORY_CLICK
-  }
-}
+  };
+};
 
 // authentication state
 export const loginRequestSent = () => {
@@ -63,26 +93,50 @@ export const populateWithFakeData = (data) => {
 /**
 * Basket interaction
 */
-export const basketDecreaseCount = (id) => {
+export const basketDecreaseCount = (sku) => {
   return {
     type: types.BASKET_DECREASE_COUNT,
-    id
+    sku
   };
 };
 
-export const basketIncreaseCount = (id) => {
+export const basketIncreaseCount = (sku) => {
   return {
     type: types.BASKET_INCREASE_COUNT,
-    id
+    sku
   };
 };
 
-export const basketRemoveItem = (id) => {
+export const basketRemoveItem = (sku) => {
   return {
     type: types.BASKET_REMOVE_ITEM,
-    id
+    sku
   };
 };
+
+export const clearBasket = () => {
+  return {
+    type: types.CLEAR_BASKET
+  };
+}
+
+export const transactionRequestSuccess = () => {
+  return {
+    type: types.TRANSACTION_REQUEST_SUCCESS
+  };
+}
+
+export const transactionRequestFailure = () => {
+  return {
+    type: types.TRANSACTION_REQUEST_FAILURE
+  };
+}
+
+export const transactionRequestSent = () => {
+  return {
+    type: types.TRANSACTION_REQUEST_SENT
+  };
+}
 
 /**
 * Product save requests
@@ -104,6 +158,25 @@ export const saveProductRequestFailure = (err) => {
 export const saveProductRequestSent = () => {
   return {
     type: types.SAVE_PRODUCT_REQUEST_SENT,
+  }
+}
+
+/**
+* UI action creators
+*/
+export const toggleCheckout = () => {
+  return {
+    type: types.TOGGLE_CHECKOUT
+  }
+}
+
+/**
+* category filter pane
+*/
+export const toggleCategory = (category) => {
+  return {
+    type: types.TOGGLE_CATEGORY,
+    category
   }
 }
 //////////////////////////////////////////////////////////////
@@ -130,7 +203,7 @@ export const attemptLogin = ({username, password}) => {
       localStorage.setItem('jwt', jwt);
       dispatch(loginRequestSuccess(admin, jwt, name, username));
       dispatch(reset('loginForm'));
-      dispatch(push('/store'));
+      dispatch(push('/sell'));
 
     })
     .catch(err => {
@@ -159,3 +232,55 @@ export const saveProduct = (data) => {
     dispatch(saveProductRequestSent());
   }
 }
+
+export const transactionCompleted = () => {
+  return (dispatch, getState) => {
+    var transaction = {
+      basket: getState().basket,
+      tender: getState().payment.method
+    };
+    const config = {
+      url: '/api/transactions',
+      method: 'post',
+      data: transaction
+    };
+    axios(config)
+    .then(({ data }) => {
+      dispatch(transactionRequestSuccess());
+    })
+    .catch(err => {
+      dispatch(transactionRequestFailure());
+    });
+    dispatch(transactionRequestSent());
+  };
+};
+
+export const validateCashReceived = (amount) => {
+  return (dispatch, getState) => {
+    if (amount - total(getState()) > 0) {
+      // send transaction request to server
+      dispatch(transactionCompleted());
+    } else {
+      // display warning not enough
+    }
+    dispatch(cashReceived(amount));
+  };
+};
+
+export const paymentMethodChange = (newMethod) => {
+  return (dispatch) => {
+    dispatch(resetPayment());
+    dispatch(paymentMethodSelected(newMethod));
+    // clear payment forms?
+    dispatch(reset('amountReceived'));
+  };
+};
+
+export const cashCheckoutCompleted = () => {
+  return (dispatch) => {
+    dispatch(reset('amountReceived'));
+    dispatch(checkoutCompleted());
+    dispatch(clearBasket());
+    dispatch(push('/sell'));
+  };
+};

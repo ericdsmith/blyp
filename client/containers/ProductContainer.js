@@ -3,17 +3,17 @@ import {connect} from 'react-redux';
 import ProductComponent from '../components/ProductComponent.jsx'
 
 const mapStateToProps = (state, ownProps) => {
-  const {id} = ownProps;
+  const { sku } = ownProps;
   return {
-    name: state.products[id].name
+    name: state.products[sku].name
   };
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const {id} = ownProps;
+  const { sku } = ownProps;
   return {
     incrementItem: () => {
-      dispatch(actions.basketIncreaseCount(id));
+      dispatch(actions.basketIncreaseCount(sku));
     }
   };
 }

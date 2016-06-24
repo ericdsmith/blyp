@@ -1,6 +1,6 @@
 import * as actions from '../actions'
-import {connect} from 'react-redux';
-import Basket from '../components/BasketComponent.jsx'
+import { connect } from 'react-redux';
+import Basket from '../components/Basket.jsx'
 
 const mapStateToProps = (state) => {
   return {

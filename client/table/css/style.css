@@ -1,0 +1,72 @@
+@import url(http://fonts.googleapis.com/css?family=Muli:400,500,700,300,100);
+div.table-title {
+  display: block;
+  margin: auto;
+  max-width: 660px;
+  padding:5px;
+  width: 100%;
+}
+.table-title h3 {
+   color: #000000;
+   font-size: 30px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Muli";
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+}
+.table-fill {
+  border-collapse: collapse;
+  height: 400px;
+  margin: auto;
+  max-width: 800px;
+  padding:5px;
+  width: 100%;
+}
+/*table header*/
+th {
+  color:#b0b0b0;
+  background:#58595d;
+  border-right: 1px solid #343a45;
+  border-top: 2px solid #0ca56a;
+  border-bottom: 1px solid #b0b0b0;
+  font-size:20px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  vertical-align:middle;
+  text-transform: uppercase;
+}
+
+th.text-left {
+  text-align: left;
+}
+/*table row*/
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom: 1px solid #C1C3D1;
+  border-left: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+tr:hover td {
+  background:#8a8282;
+  color:#FFFFFF;
+  border-top: 1px solid #b0b0b0;
+  border-bottom: 1px solid #b0b0b0;
+}
+/*table cell*/
+td {
+  background:#FFFFFF;
+  padding:20px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+td.text-left {
+  text-align: left;
+}

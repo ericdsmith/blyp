@@ -1,0 +1,68 @@
+@import url(http://fonts.googleapis.com/css?family=Muli:400,700);
+
+.menu{
+	width:830px;
+	height:62px;
+	margin:auto;
+	background:#58595d;
+	border-top:solid 2px #0ca56a;
+}
+
+.menu ul{
+	margin:0;
+	padding:0;
+	float:left;
+	list-style:none;
+}
+
+.menu ul li{
+	position:relative;
+	float:left;
+}
+.menu ul li a{
+	display:block;
+	height:62px;
+	padding:0 30px;
+	font:15px/45px 'Muli', sans-serif;
+	color:#b0b0b0;
+}
+
+.menu .active{
+	background: #58595d
+}
+
+.menu ul li.active > a, .menu ul li:hover > a, .menu ul li.active:hover > a{
+	background:#0ca56a;
+	color:#FFF;
+}
+
+.search{
+	margin:16px 16px 16px 16px;
+	float:right;
+	border:solid 1px #555;
+}
+
+.search input[type="text"]{
+	width:183px;
+	height:24px;
+	padding:3px 4px 0;
+	float:left;
+	font:13px 'Muli', sans-serif;
+	color:#FFF;
+	background:#58595d;
+	border-bottom: 1px solid #0ca56a;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	outline: none;
+}
+
+.search input[type="submit"]{
+	width:28px;
+	height:28px;
+	float:left;
+	background-image:url(search_icon.png);
+	background-color:#b0b0b0;
+	border:none;
+	cursor:pointer;
+}

@@ -14,7 +14,7 @@ export default class ProductsPane extends Component {
           var list = [];
           if (Object.keys(products).length) {
             for (var sku in products) {
-              list.push(<Product key={sku} id={sku} />)
+              list.push(<Product key={sku} sku={sku} />)
             }
           }
           return list;

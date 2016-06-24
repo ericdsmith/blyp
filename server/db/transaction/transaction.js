@@ -7,12 +7,12 @@ var transactionSchema = mongoose.Schema({
   //References to customers in customer collection
   customer: {type: Schema.ObjectId, ref: 'Customer'},
 
-  //References to items in item collection
-  item_id: [{type: Schema.ObjectId, ref: 'Product'}],
+  //Contains skus for products and quantity purchased
+  basket: Array,
 
   //How was the purchase made, Amex, MasterCard, Cash etc.
-  currency: [{type: String, required: true}],
-  purchase_total: {type: Number, required: true}
+  tender: String,
+  purchase_total: Number
 });
 
 var Transaction = mongoose.model('Transaction', transactionSchema);

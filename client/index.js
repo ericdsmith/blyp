@@ -7,6 +7,7 @@ import configureStore from './store/configureStore';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import './assets/styles/index.css';
+import './assets/styles/bootstrap.css';
 
 injectTapEventPlugin();
 

@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch) => {
             name: "Pearl Studs",
             price: 85,
             quantity: 10,
-            category: 'jewelery',
+            category: 'jewelry',
             sku: 4
           },
           5: {

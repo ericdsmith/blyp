@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Testing = ({populateWithFakeData}) => (
-  <div>
-    <h2 onClick={populateWithFakeData}>POPULATE WITH FAKE DATA</h2>
-  </div>
-);
+class PopulateWithFakeData extends Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    this.props.populateWithFakeData();
+  }
+  render() {
+    return (<div></div>);
+  }
+}
 
-export default Testing;
+export default PopulateWithFakeData;

@@ -1,6 +1,6 @@
-import {reduxForm} from 'redux-form';
-import * as actions from '../../actions/index.js';
-import AddProduct from '../../components/forms/AddProductFormComponent.jsx';
+import { reduxForm } from 'redux-form';
+import * as actions from '../actions/index.js';
+import AddProduct from '../components/forms/AddProductFormComponent.jsx';
 
 const mapDispatchToProps = (dispatch) => {
   return {

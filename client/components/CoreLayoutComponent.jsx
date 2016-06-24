@@ -1,8 +1,9 @@
 import React from 'react';
+import NavBar from './NavBar.jsx';
 
 export const CoreLayout = ({children}) => (
   <div>
-    <h1>Blyp</h1>
+    <NavBar/>
     {children}
   </div>
 );

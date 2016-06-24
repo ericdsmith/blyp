@@ -6,6 +6,7 @@ import toolbar from './toolbarReducer.js';
 import auth from './authReducer.js';
 import basket from './basketReducer.js';
 import products from './productsReducer.js';
+import payment from './paymentReducer'
 // import reducer from './myReducerFile.js';
 
 /**
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   routing,
   auth,
   basket,
-  products
+  products,
+  payment
 });
 
 export default rootReducer;
