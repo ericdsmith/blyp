@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import index from '../assets/styles/index.css';
 
+/**
+*handles changes to email in profile component
+*/
 export default class ChangeEmail extends Component {
   constructor(props) {
     super(props);

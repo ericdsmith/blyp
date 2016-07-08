@@ -4,6 +4,9 @@ import index from '../assets/styles/index.css';
 import bootstrap from '../assets/styles/bootstrap.css';
 import inventory from '../assets/styles/InventoryPane.css';
 
+/**
+* renders form which allows users to enter credit card information manually
+*/
 export default class ProcessCreditCard extends Component {
   constructor(props) {
     super(props);

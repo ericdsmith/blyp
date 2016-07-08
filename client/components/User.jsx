@@ -5,6 +5,10 @@ import Delete from '../containers/DeleteUser.js';
 import c from 'classnames';
 import m from '../assets/materialize/css/materialize.css';
 
+/**
+* represents a single user on the permissions page
+* contained within Users component
+*/
 const User = ({ username }) => (
   <li className={c(m.collectionItem, m.avatar)}>
     <img className={m.circle} src={`/api/avatar/${username}`} alt={username} />

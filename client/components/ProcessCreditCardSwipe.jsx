@@ -4,6 +4,9 @@ import index from '../assets/styles/index.css';
 import bootstrap from '../assets/styles/bootstrap.css';
 import inventory from '../assets/styles/InventoryPane.css';
 
+/**
+* processes credit card swipe (non manual entry) on payment page
+*/
 export default class LoginForm extends Component {
   constructor(props) {
     super(props);

@@ -5,6 +5,9 @@ import index from '../assets/styles/index.css';
 import bootstrap from '../assets/styles/bootstrap.css';
 import inventory from '../assets/styles/InventoryPane.css';
 
+/**
+*contains all navigation/toolbar buttons
+*/
 export default class Toolbar extends Component {
   constructor(props) {
     super(props);

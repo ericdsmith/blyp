@@ -8,6 +8,9 @@ import index from '../assets/styles/index.css';
 import bootstrap from '../assets/styles/bootstrap.css';
 import inventory from '../assets/styles/InventoryPane.css';
 
+/**
+contains products, filter for products, and basket (which contains items added to purchase)
+*/
 const Sell = () => (
   <div className="container-fluid">
     <div className={bootstrap.colmd2}>

@@ -4,6 +4,9 @@ import index from '../assets/styles/index.css';
 import bootstrap from '../assets/styles/bootstrap.css';
 import inventory from '../assets/styles/InventoryPane.css';
 
+/**
+* represents a product contained within the inventory page
+*/
 export default class Product extends Component {
   constructor(props) {
     super(props);

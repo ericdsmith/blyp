@@ -17,10 +17,10 @@ import UpdateName from'../containers/UpdateNameForm';
 import UpdateEmail from '../containers/UpdateEmailForm';
 import UpdatePassword from '../containers/UpdatePasswordForm';
 import UpdateUsername from '../containers/UpdateUsernameForm';
-// import ProfileDetails from 'profileDetails.jsx';
-// import ProfileDetails from '../components/ProfileDetails.jsx';
 
-
+/**
+Profile view contains all created businesses as a list, CreateBusiness and JoinBusiness components
+*/
 const Profile = ({ businesses, name, username, email, changeName, changeEmail, changeUsername, changePassword}) => (
   <div>
     <div className={m.container}>
@@ -49,7 +49,7 @@ const Profile = ({ businesses, name, username, email, changeName, changeEmail, c
 
       </div>
     </div>
-    {/*Profile info starts here */}
+    {/*Profile info starts here which shows user info, currently not in use*/}
     {/*
     <div className={index.profilebox}>
       <div className={index.profilepic}/>

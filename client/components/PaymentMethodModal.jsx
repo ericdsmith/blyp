@@ -4,6 +4,11 @@ import ChangeDue from '../containers/ChangeDue.js';
 import ProcessCreditCard from '../containers/ProcessCreditCard.js';
 import CreditCardModal from '../containers/CreditCardModal.js'
 
+/**
+* renders payment page, allows selection by button of how a user wants to pay
+* holds AmountReceived, ChangeDue, CreditCardModal components
+* contained within PaymentPane component
+*/
 const PaymentMethodModal = ({ method, changeDue }) => (
   <div>
     <div>

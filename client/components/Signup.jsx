@@ -5,6 +5,14 @@ import lockPNG from '../assets/images/lock.png';
 import index from '../assets/styles/index.css';
 import logo from '../assets/images/blyplogo.png';
 
+/**
+*signup component
+* @param {string} name - Name of User
+* @param {string} email - Email of user
+* @param {string} password  - password of user
+* @param {string} username - username of user
+* @param {.jpg} profilePicture - picture of user
+*/
 export default class Signup extends Component {
   constructor(props) {
     super(props);

@@ -5,6 +5,9 @@ import { Link } from 'react-router';
 import index from '../assets/styles/index.css';
 import classNames from 'classnames';
 
+/** 
+Each row represents a product in the inventory view
+*/
 export default class ProducttdeRow extends Component {
   constructor(props) {
     super(props);

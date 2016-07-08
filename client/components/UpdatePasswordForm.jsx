@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import index from '../assets/styles/index.css';
 
+/**
+*handles changes to password in profile component
+*/
 export default class ChangePassword extends Component {
   constructor(props) {
     super(props);
